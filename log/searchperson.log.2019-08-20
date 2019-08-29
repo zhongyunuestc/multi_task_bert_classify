@@ -1,0 +1,53 @@
+2019-08-19 13:56:57,869 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1868
+2019-08-19 13:56:59,763 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-19 13:57:01,132 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-19 13:57:06,410 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-19 13:57:06,410 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-19 13:57:08,619 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-19 14:04:40,435 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1868
+2019-08-19 14:16:08,565 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 14:16:10,508 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-19 14:16:11,791 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-19 14:16:16,620 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-19 14:16:16,620 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-19 14:16:18,820 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-19 15:58:13,462 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:00:28,298 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:02:31,469 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:16:12,152 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:33:12,064 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:33:13,964 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-19 16:33:15,261 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-19 16:33:20,529 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-19 16:33:20,529 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-19 16:33:22,718 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-19 16:34:20,320 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:35:50,422 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:37:14,291 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:49:36,036 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 16:49:37,999 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-19 16:49:39,319 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-19 16:49:44,399 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-19 16:49:44,399 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-19 16:49:46,576 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-19 17:23:15,324 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 17:36:53,461 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2238
+2019-08-19 17:36:55,414 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-19 17:36:56,669 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-19 17:37:01,778 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-19 17:37:01,778 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-19 17:37:03,948 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-20 10:43:44,440 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2478
+2019-08-20 10:43:46,099 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-20 10:43:47,461 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-20 10:43:51,929 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-20 10:43:51,929 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-20 10:43:53,919 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-20 10:47:45,116 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2478
+2019-08-20 11:05:26,124 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2478
+2019-08-20 11:05:27,830 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-20 11:05:29,073 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-20 11:05:34,059 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-20 11:05:34,059 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-20 11:05:36,030 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-20 11:13:03,809 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2478

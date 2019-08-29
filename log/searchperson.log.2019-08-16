@@ -1,0 +1,84 @@
+2019-08-14 15:09:05,655 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/search_bert_fine_tuning/example/runs/search_person/checkpoints/model-2488
+2019-08-14 15:09:07,579 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-14 15:09:08,859 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-14 15:09:11,899 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-14 15:09:11,899 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-14 15:09:14,008 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/search_bert_fine_tuning/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-14 16:43:33,655 - INFO - [83]search_http.py - 居住证如何办理呀
+2019-08-14 16:43:33,773 - INFO - [2063]web.py - 200 GET /searchperson?text=%E5%B1%85%E4%BD%8F%E8%AF%81%E5%A6%82%E4%BD%95%E5%8A%9E%E7%90%86%E5%91%80&method=predict (192.168.82.83) 119.03ms
+2019-08-14 16:43:33,880 - WARNING - [2063]web.py - 404 GET /favicon.ico (192.168.82.83) 0.66ms
+2019-08-14 16:43:42,182 - INFO - [83]search_http.py - 居住证如何办理呀？
+2019-08-14 16:43:42,301 - INFO - [2063]web.py - 200 GET /searchperson?text=%E5%B1%85%E4%BD%8F%E8%AF%81%E5%A6%82%E4%BD%95%E5%8A%9E%E7%90%86%E5%91%80%EF%BC%9F&method=predict (192.168.82.83) 119.29ms
+2019-08-14 16:43:44,675 - INFO - [83]search_http.py - 居住证如何办理呀
+2019-08-14 16:43:44,796 - INFO - [2063]web.py - 304 GET /searchperson?text=%E5%B1%85%E4%BD%8F%E8%AF%81%E5%A6%82%E4%BD%95%E5%8A%9E%E7%90%86%E5%91%80&method=predict (192.168.82.83) 122.06ms
+2019-08-14 16:43:47,011 - INFO - [83]search_http.py - 居住证如何？办理呀
+2019-08-14 16:43:47,099 - INFO - [2063]web.py - 200 GET /searchperson?text=%E5%B1%85%E4%BD%8F%E8%AF%81%E5%A6%82%E4%BD%95%EF%BC%9F%E5%8A%9E%E7%90%86%E5%91%80&method=predict (192.168.82.83) 88.42ms
+2019-08-14 17:25:01,332 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/search_bert_fine_tuning/example/runs/search_person/checkpoints/model-3158
+2019-08-14 17:25:03,250 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-14 17:25:04,512 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-14 17:25:10,504 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-14 17:25:10,504 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-14 17:25:12,711 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/search_bert_fine_tuning/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-15 16:48:50,262 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/search_bert_fine_tuning/example/runs/search_person/checkpoints/model-3234
+2019-08-15 16:48:52,215 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-15 16:48:53,511 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-15 16:48:59,291 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-15 16:48:59,292 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-15 16:49:01,480 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/search_bert_fine_tuning/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-16 11:47:57,440 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2557
+2019-08-16 11:47:59,392 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-16 11:48:00,726 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-16 11:48:06,614 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-16 11:48:06,614 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-16 11:48:08,804 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-16 14:33:23,197 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2557
+2019-08-16 15:00:54,040 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:02:44,997 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:03:23,645 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:04:16,679 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:13:13,807 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:14:04,791 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:15:08,424 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:16:31,767 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:17:59,142 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:24:43,687 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:49:49,341 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:51:01,667 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:51:23,395 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 15:54:08,848 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 16:02:06,749 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2000
+2019-08-16 16:12:56,506 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1874
+2019-08-16 16:12:58,433 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-16 16:12:59,824 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-16 16:13:05,833 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-16 16:13:05,833 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-16 16:13:08,002 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-16 16:15:29,914 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1874
+2019-08-16 16:16:19,939 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1874
+2019-08-16 16:27:17,545 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1874
+2019-08-16 16:27:19,454 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-16 16:27:20,720 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-16 16:27:25,839 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-16 16:27:25,840 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-16 16:27:28,007 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-16 16:27:41,482 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1874
+2019-08-16 16:29:44,594 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1874
+2019-08-16 16:29:46,536 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-16 16:29:47,823 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-16 16:29:52,952 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-16 16:29:52,952 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-16 16:29:55,122 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-16 16:36:49,952 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1874
+2019-08-16 16:36:51,849 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-16 16:36:53,211 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-16 16:36:58,435 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-16 16:36:58,435 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-16 16:37:00,606 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-16 16:37:57,825 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1874
+2019-08-16 16:49:01,467 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1868
+2019-08-16 16:49:03,439 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-16 16:49:04,723 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-16 16:49:09,853 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-16 16:49:09,853 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-16 16:49:12,186 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-16 16:49:23,695 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-1868

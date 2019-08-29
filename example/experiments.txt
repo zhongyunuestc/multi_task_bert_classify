@@ -1,0 +1,39 @@
+
+train person classifier model =>
+normal person acc: 93.18
+unknown person acc: N/A
+
+
+train person representation model =>
+normal sent acc: N/A
+unknown sent acc: N/A
+
+normal person acc: 92.97
+unknown person acc: 67.8
+
+
+--------------------------------
+
+train sent classifier model =>
+normal sent acc: 90.2
+unknown sent acc: N/A
+
+normal person acc: 92.5
+unknown person acc: N/A
+
+
+
+train sent representation model =>
+normal sent acc:  89.71
+unknown sent acc:  71.77
+
+normal person acc:  92.65
+unknown person acc: 78.35
+
+
+--------------------------------
+
+train pointsimilar
+normal sent acc:  
+unknown sent acc: 85%
+

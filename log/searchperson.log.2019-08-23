@@ -1,0 +1,40 @@
+2019-08-21 14:01:56,368 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2478
+2019-08-21 14:01:58,075 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-21 14:01:59,312 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-21 14:02:04,331 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-21 14:02:04,331 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-21 14:02:06,253 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-21 14:08:56,068 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2478
+2019-08-21 14:08:57,738 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-21 14:08:58,948 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-21 14:09:03,887 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-21 14:09:03,887 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-21 14:09:05,816 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-21 14:23:56,948 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2231
+2019-08-21 14:23:58,757 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-21 14:24:00,040 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-21 14:24:04,773 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-21 14:24:04,773 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-21 14:24:06,884 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-21 14:24:31,944 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2231
+2019-08-21 14:27:53,503 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2231
+2019-08-21 14:36:05,292 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2231
+2019-08-21 14:36:06,947 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-21 14:36:08,312 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-21 14:36:13,247 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-21 14:36:13,248 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-21 14:36:15,204 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-21 14:56:59,869 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test/example/runs/search_person/checkpoints/model-2231
+2019-08-23 15:03:26,436 - INFO - [115]tf_logging.py - Restoring parameters from /root/zhaomeng/classify_test_v2/example/runs/search_person/checkpoints/model-2231
+2019-08-23 15:03:28,124 - INFO - [115]tf_logging.py - Froze 201 variables.
+2019-08-23 15:03:29,355 - INFO - [115]tf_logging.py - Converted 201 variables to const ops.
+2019-08-23 15:03:32,325 - INFO - [115]tf_logging.py - No assets to save.
+2019-08-23 15:03:32,325 - INFO - [115]tf_logging.py - No assets to write.
+2019-08-23 15:03:34,252 - INFO - [115]tf_logging.py - SavedModel written to: /root/zhaomeng/classify_test_v2/example/runs/search_person/checkpoints/1/saved_model.pb
+2019-08-23 15:17:26,360 - INFO - [37]textcleaner.py - 'pattern' package not found; tag filters are not available for English
+2019-08-23 15:27:08,410 - INFO - [37]textcleaner.py - 'pattern' package not found; tag filters are not available for English
+2019-08-23 15:39:32,645 - INFO - [37]textcleaner.py - 'pattern' package not found; tag filters are not available for English
+2019-08-23 15:40:24,549 - INFO - [37]textcleaner.py - 'pattern' package not found; tag filters are not available for English
+2019-08-23 15:41:30,204 - INFO - [37]textcleaner.py - 'pattern' package not found; tag filters are not available for English
+2019-08-23 15:43:31,686 - INFO - [37]textcleaner.py - 'pattern' package not found; tag filters are not available for English
+2019-08-23 15:45:42,483 - INFO - [37]textcleaner.py - 'pattern' package not found; tag filters are not available for English
