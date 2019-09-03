@@ -21,3 +21,4 @@ python bert_train.py --task_name=test \
                      --stopword_file=stopword_data/stop_symbol \
                      --num_train_epochs=20;
 python ckpt_to_pb.py
+python extract_features.py

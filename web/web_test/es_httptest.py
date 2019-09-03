@@ -31,15 +31,24 @@ def write_candidates(output_file):
 if __name__ == "__main__":
     queries = read_queries('errors.tsv')
 
-    query = '介绍一下云桥'
+    #query = '科大讯飞那边的人来了，请安排算法工程师与其对接，探讨下一步的合作'
+    query = '郭晋宇 我要领一包纸巾'
     url = 'http://47.97.108.232:20015/findUserSentence/queryClassifyByES'
-    #json = {'question': query, 'appId':'k55frqcd','pageSize': 50}
-    json_data = {'question': query, 'appId':'k55frqcd','pageSize': 5}
+    json_data = {'question': query, 'appId':'k55frqcd','pageSize': 50}
+    #json_data = {'question': query, 'appId':'k55frqcd','pageSize': 5}
     rs = requests.post(url=url, json=json_data)
 
     #print(rs.text)
     data = json.loads(rs.text)
     cands = data['data']['data']
+    print(cands[0].keys())
     sims = [item['corpus'] for item in cands]
     print(sims)
+
+    candidates = [{'text': item['corpus'], 'userId': item['userId'], 'features': item['feature']} for item in cands]
+
+    url = 'http://47.96.228.29:17123/personranking'
+    json_data = {'query': query, 'method': 'ranking', 'candidates': candidates}
+    rs = requests.post(url, json=json_data)
+    print(rs.text)
     pass

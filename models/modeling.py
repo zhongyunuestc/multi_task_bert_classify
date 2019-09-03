@@ -182,11 +182,8 @@ class BertModel(object):
 
         if token_type_ids is None:
             token_type_ids = tf.zeros(shape=[batch_size, seq_length], dtype=tf.int32)
-        #print(input_ids) # name=IteratorGetNext:0
-        #print(input_mask) # name=IteratorGetNext:1
-        #print(token_type_ids) #name=IteratorGetNext:4
-        #exit()
-        with tf.variable_scope(scope, default_name="bert"):
+            
+        with tf.variable_scope(scope, default_name="bert", reuse=tf.AUTO_REUSE):
             with tf.variable_scope("embeddings"):
                 # Perform embedding lookup on the word ids.
                 (self.embedding_output, self.embedding_table) = embedding_lookup(

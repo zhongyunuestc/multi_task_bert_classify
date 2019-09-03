@@ -543,7 +543,9 @@ def create_model_v2(bert_config,
                                input_ids=input_ids,
                                input_mask=input_mask,
                                token_type_ids=segment_ids,
-                               use_one_hot_embeddings=use_one_hot_embeddings) 
+                               use_one_hot_embeddings=use_one_hot_embeddings,
+                               scope='bert') 
+
     tvars = tf.trainable_variables()
     initialized_variable_names = {}
     if init_checkpoint:
@@ -582,7 +584,8 @@ def get_train_op(loss, learning_rate, num_train_steps, num_warmup_steps):
     return train_op
 
 def inference(model, num_labels, is_training, labels):
-    output_layer = model.get_pooled_output()
+    #output_layer = model.get_pooled_output()
+    output_layer = tf.reduce_mean(model.get_sequence_output(), 1)
     output_layer = tf.identity(output_layer, 'sentence_features')
 
     hidden_size = output_layer.shape[-1].value
