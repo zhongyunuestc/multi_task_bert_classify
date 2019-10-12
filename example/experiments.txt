@@ -1,3 +1,4 @@
+<known sent>
 
 train person classifier model =>
 normal person acc: 93.18
@@ -11,8 +12,7 @@ unknown sent acc: N/A
 normal person acc: 92.97
 unknown person acc: 67.8
 
-
---------------------------------
+================================
 
 train sent classifier model =>
 normal sent acc: 90.2
@@ -30,10 +30,234 @@ unknown sent acc:  71.77
 normal person acc:  92.65
 unknown person acc: 78.35
 
-
---------------------------------
+================================
 
 train pointsimilar
 normal sent acc:  
 unknown sent acc: 85%
+
+==============================
+<unknown  sent>
+
+original bert
+epochs=20, lr=5e-5, pooled=mean
+acc:        0.7382833070036862      0.7388098999473407
+user acc:   0.7977883096366508      0.8088467614533965
+
+
+
+roBERTa-HIT
+epochs=15, lr=5e-5, pooled=mean
+acc:        0.7467087941021591      0.7488151658767772      0.7298578199052133
+user acc:   0.8141126908899421      0.8072669826224329      0.79884149552396
+
+roBERTa-HIT
+epochs=15, lr=1e-6, pooled=mean
+acc:        0.6535018430753028
+user acc:   0.7330173775671406
+
+roBERTa-HIT
+epochs=15, lr=5e-6, pooled=mean
+acc:        0.7151132174828857
+user acc:   0.7772511848341233
+
+roBERTa-HIT
+epochs=30, lr=5e-6, pooled=mean
+acc:        0.693522906793049
+user acc:   0.7682991047919958
+
+
+roBERTa-HIT
+epochs=20, lr=5e-5, pooled=mean
+acc:        0.740916271721959       0.7456556082148499      0.741969457609268 
+user acc:   0.8035808320168509      0.7935755660874144      0.8072669826224329
+
+
+roBERTa-HIT
+epochs=30, lr=5e-5, pooled=mean
+acc:        0.7377567140600316      0.7440758293838863  
+user acc:   0.7851500789889415      0.8020010531858873
+
+
+roBERTa-brightmart
+epochs=15, lr=5e-5, pooled=mean
+acc:        0.7098472880463402      0.6929963138493944      0.7008952080042128
+user acc:   0.7604002106371774      0.7630331753554502      0.7625065824117957
+
+
+roBERTa-brightmart
+epochs=20, lr=5e-5, pooled=mean
+acc:        0.7256450763559769      0.6829910479199579
+user acc:   0.7872564507635598      0.7477619799894681
+
+
+roBERTa-brightmart
+epochs=20, lr=1e-6, pooled=mean
+acc:        0.6471827277514481 
+user acc:   0.7393364928909952
+
+
+roBERTa-brightmart
+epochs=20, lr=5e-6, pooled=mean
+acc:        0.6951026856240127
+user acc:   0.7651395471300685
+
+roBERTa-brightmart
+epochs=40, lr=5e-6, pooled=mean
+acc:        0.6692996313849394 
+user acc:   0.732490784623486
+
+
+
+------------------------------
+
+pointwise only:
+acc: 83.09 
+
+
+pairwise only:
+acc: 77.3
+------------------------------
+
+representation(paraphrase identity):
+1. truncated pairsent
+acc:        0.7035281727224855
+user acc:   0.7767245918904687
+
+
+epochs=15, lr=5e-5, pooled=mean, roBERTa-HIT
+
+
+
+2. all pairsent
+acc:        0.6703528172722486
+user acc:   0.75144813059505
+------------------------------
+pairwise
+1.truncated pairsent
+
+epochs=15, lr=5e-5, pooled=mean, addon_loss=0.5
+acc:        0.7161664033701949      0.7461822011585044      0.7293312269615587
+user acc:   0.785676671932596       0.7909426013691416      0.7977883096366508
+
+
+epochs=20, lr=5e-5, pooled=mean, addon_loss=0.5
+acc:        0.7293312269615587      0.7577672459189047      0.7072143233280674
+user acc:   0.7977883096366508      0.8130595050026329      0.775144813059505
+
+epochs=20, lr=5e-5, pooled=mean, addon_loss=0.5
+acc:        0.6919431279620853
+user acc:   0.7719852553975777
+
+
+epochs=20, lr=1e-6, pooled=mean, addon_loss=0.5
+acc:        0.5771458662453923
+user acc:   0.6656134807793576
+
+
+epochs=20, lr=5e-6, pooled=mean, addon_loss=0.5
+acc         0.6529752501316483
+user acc:   0.7382833070036862
+
+
+epochs=15, lr=5e-5, pooled=mean, addon_loss=0.5, roBERTa-HIT
+acc:        0.7540810953133228      0.7651395471300685      0.7509215376513955      0.7456556082148499
+user acc:   0.8041074249605056      0.8246445497630331      0.8151658767772512      0.7998946814112691
+
+epochs=20, lr=5e-5, pooled=mean, addon_loss=0.5, roBERTa-HIT
+acc:        0.7319641916798315      0.7388098999473407      0.741969457609268
+user acc:   0.784623486045287       0.7946287519747235      0.8062137967351237
+
+
+epochs=15, lr=5e-5, pooled=mean, addon_loss=0.999, roBERTa-HIT
+acc:        0.7619799894681412       
+user acc:   0.8267509215376514      
+
+
+
+2. all pairsent
+epochs=15, lr=5e-5, pooled=mean, roBERTa-HIT
+
+
+
+------------------------------
+interaction:
+1. truncate by train example nums
+epochs=5, lr=5e-5, pooled=cls
+acc:        0.7298578199052133      0.7056345444971037      0.6993154291732491
+user acc:   0.7883096366508688      0.7825171142706687      0.7635597682991048
+
+epochs=10, lr=5e-5, pooled=cls
+acc:        0.7135334386519221      0.6940494997367035      0.7335439705107951
+user acc:   0.7835703001579779      0.7714586624539231      0.7946287519747235
+
+epochs=15, lr=5e-5, pooled=cls, addon_loss=0.5
+acc:        0.7261716692996314      0.7303844128488678      0.7193259610321222
+user acc:   0.7919957872564508      0.8009478672985783      0.7935755660874144
+
+epochs=15, lr=5e-5, pooled=mean, addon_loss=0.5
+acc:        0.7203791469194313      0.708794102159031       0.7340705634544498
+user acc:   0.7898894154818326      0.7793575566087414      0.7888362295945235
+
+epochs=15, lr=5e-5, pooled=cls, addon_loss=1.0
+acc:        0.24
+user acc:   0.26
+
+epochs=15, lr=5e-5, pooled=mean, addon_loss=1.0
+acc:        0.4823591363875724
+user acc:   0.5381779884149552
+
+epochs=15, lr=1e-6, pooled=mean, addon_loss=1.0
+acc:        0.45813586097946285
+user acc:   0.5208004212743549
+
+
+epochs=15, lr=5e-6, pooled=mean, addon_loss=1.0
+acc:        0.31068983675618744 
+user acc:   0.37335439705107953
+
+epochs=15, lr=5e-5, pooled=mean, addon_loss=0.5, roBERTa-HIT
+acc:        0.7551342812006319      0.7530279094260137      0.732490784623486       0.7230121116377041
+user acc:   0.8114797261716693      0.8088467614533965      0.7962085308056872      0.7914691943127962
+
+epochs=20, lr=5e-5, pooled=mean, addon_loss=0.5, roBERTa-HIT
+acc:        0.7345971563981043      0.7398630858346498      0.7156398104265402
+user acc:   0.7914691943127962      0.8109531332280148      0.7788309636650869
+
+
+
+epochs=20, lr=5e-5, pooled=cls, addon_loss=0.5
+acc:        0.7414428646656135      0.7198525539757767      0.7003686150605581 
+user acc:   0.7946287519747235      0.7972617166929963      0.7635597682991048
+
+
+epochs=20, lr=5e-5, pooled=mean, addon_loss=0.5
+acc:        0.7288046340179042      0.7030015797788309 
+user acc:   0.7840968931016324      0.7698788836229594
+
+
+
+epochs=30, lr=5e-5
+acc:        0.718272775144813       0.7124802527646129      0.6940494997367035
+user acc:   0.7972617166929963      0.7867298578199052      0.7619799894681412
+
+epochs=40, lr=5e-5
+acc:        0.708794102159031       0.6940494997367035      0.6956292785676672
+user acc:   0.7719852553975777      0.7719852553975777      0.7682991047919958
+
+
+2. all pairsent
+
+epochs=10, lr=5e-5, pooled=mean, addon_loss=0.5
+acc:        0.6492890995260664
+user acc:   0.7014218009478673
+
+epochs=20, lr=5e-5, pooled=mean, addon_loss=1.0
+acc:        0.229594523433386         
+user acc:   0.2659294365455503
+
+
+
+
+
 

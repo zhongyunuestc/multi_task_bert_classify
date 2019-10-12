@@ -56,7 +56,7 @@ def freeze_graph(input_checkpoint_dir, output_graph):
  
     # 指定输出的节点名称,该节点名称必须是原模型中存在的节点
     # 直接用最后输出的节点，可以在tensorboard中查找到，tensorboard只能在linux中使用
-    output_node_names = ['input_ids', 'input_mask', 'segment_ids', 'is_training', 'loss/pred_labels', 'loss/probs', 'loss/logits']
+    output_node_names = ['input_ids', 'input_mask', 'segment_ids', 'is_training', 'loss/pred_labels', 'loss/probs', 'loss/logits', 'sentence_features']
     cp_file = tf.train.latest_checkpoint(input_checkpoint_dir)
 
     graph = tf.Graph()

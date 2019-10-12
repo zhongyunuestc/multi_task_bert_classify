@@ -306,12 +306,16 @@ def eval():
                 #print(truth_id)
                 #print(batch_probs_value[best_id])
         
+                count += 1
                 predicts.append(candidates[best_id]) 
                 if best_id == truth_id:
                     corrects += 1
+                
+                if candidates[truth_id] not in cand2user or candidates[best_id] not in cand2user:
+                    continue
+
                 if cand2user[candidates[truth_id]] == cand2user[candidates[best_id]]:
                     user_corrects += 1
-                count += 1
                 #print('truth:', candidates[truth_id])
                 #print('pred:', candidates[best_id])
                 #print('truth id:', truth_id)

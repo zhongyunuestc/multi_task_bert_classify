@@ -104,6 +104,7 @@ class Evaluator(object):
         self.code_file = config['code_file']
         self.url = config['tf_serving_url']
         self.signature_name = config['signature_name']
+        self.memory_file = config['memory_file']
 
         #init label dict and processors
         label2idx, idx2label = bert_data_utils.read_label_map_file(self.label_map_file)
@@ -118,12 +119,29 @@ class Evaluator(object):
         #init stop set
         self.stop_set = dataloader.get_stopwords_set(STOPWORD_FILE)
 
-        #use default graph
+        self.uuid2features = self.get_memory()
+
+    def get_memory(self):
+        memory = {}
+        with codecs.open(self.memory_file, 'r', 'utf8') as fr:
+            for line in fr:
+                line = line.strip()
+                info = json.loads(line)
+                text = info['text']
+                uuid = info['uuid_code']
+                features = info['features']
+                memory[uuid] = features
+        return memory
+                
+
    
     def close_session(self):
         self.sess.close()
 
-    def extract_features(self, text):
+    def extract_features(self, text, uuid=None):
+        if uuid and uuid in self.uuid2features:
+            return self.uuid2features[uuid]
+
         input_ids, input_mask, segment_ids = self.trans_text2ids(text)
         batch_sentence_features = request_model_extract_features(self.url, input_ids, input_mask, segment_ids, False, self.signature_name)
 
@@ -133,7 +151,10 @@ class Evaluator(object):
 
     def ranking(self, text, cand_pool):
         start_time = datetime.datetime.now()
-        cand_features = [cand['features'] for cand in cand_pool]
+        cand_features = [cand['features'] for cand in cand_pool if 'features' in cand and len(cand['features']) > 0]
+        if len(cand_features) < 0:
+            raise Exception('候选集特征向量为空')
+
         end_time = datetime.datetime.now()
         cost = (end_time - start_time).total_seconds() * 1000
         logging.info('prepare cost' + str(cost))
@@ -239,6 +260,7 @@ if __name__ == '__main__':
     config['vocab_file'] = MODEL_DIR + '/vocab.txt'
     config['tf_serving_url'] = 'http://localhost:7831/v1/models/default:predict'
     config['signature_name'] = 'predict_text'
+    config['memory_file'] = MODEL_DIR + '/memory.tsv'
 
     test = Evaluator(config)
     #test.evaluate('我要请假')

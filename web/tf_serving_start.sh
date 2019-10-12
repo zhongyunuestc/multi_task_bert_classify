@@ -17,3 +17,5 @@ nohup tensorflow_model_server --rest_api_port=$REST_API_PORT \
       >output.file 2>&1 &
 
 nohup python tf_serving_person_ranking_http.py> output.file 2>&1 &
+
+python sender.py

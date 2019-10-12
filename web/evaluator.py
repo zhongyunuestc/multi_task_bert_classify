@@ -11,6 +11,7 @@ import csv
 import datetime
 import logging
 import numpy as np
+import codecs
 
 
 sys.path.append('../')
@@ -102,12 +103,29 @@ class Evaluator(object):
         self.probabilities_tensor = self.graph.get_operation_by_name('loss/probs').outputs[0]
         self.logits_tensor = self.graph.get_operation_by_name('loss/logits').outputs[0]
         self.sentence_features_tensor = self.graph.get_operation_by_name('sentence_features').outputs[0]
+
+        self.uuid2features = self.get_memory()
    
+
+    def get_memory(self):
+        memory = {}
+        with codecs.open(self.memory_file, 'r', 'utf8') as fr:
+            for line in fr:
+                line = line.strip()
+                info = json.loads(line)
+                text = info['text']
+                uuid = info['uuid_code']
+                features = info['features']
+                memory[uuid] = features
+        return memory    
+
     def close_session(self):
         self.sess.close()
 
     
-    def extract_features(self, text):
+    def extract_features(self, text, uuid=None):
+        if uuid and uuid in self.uuid2features:
+            return self.uuid2features[uuid]
         input_ids, input_mask, segment_ids = self.trans_text2ids(text)
         feed_dict = {         
                 self.input_ids_tensor: input_ids,
@@ -208,6 +226,7 @@ if __name__ == '__main__':
     config['label_map_file'] = LABEL_MAP_FILE 
     config['vocab_file'] = MODEL_DIR + '/vocab.txt'
     config['model_pb_path'] = MODEL_DIR + '/checkpoints/frozen_model.pb'
+    config['memory_file'] = MODEL_DIR + '/memory.tsv'
 
     pred_instance = Evaluator(config)
     rs = pred_instance.extract_features('班车报表')

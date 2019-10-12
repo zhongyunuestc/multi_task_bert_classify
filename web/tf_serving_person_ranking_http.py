@@ -152,7 +152,11 @@ class RankingHttpServer(tornado.web.RequestHandler):
         query = self.data['query']
         logging.info('extracted query:' + query)
         result = {}
-        features = self.pred_instance.extract_features(query)
+        if 'uuid_code' not in self.data:
+            features = self.pred_instance.extract_features(query)
+        else:
+            uuid = self.data['uuid_code']
+            features = self.pred_instance.extract_features(query, uuid)
         result['features'] = [float(feature) for feature in features]
         return result
 
@@ -160,6 +164,8 @@ class RankingHttpServer(tornado.web.RequestHandler):
         start_time = datetime.datetime.now()
         query = self.data['query']
         cand_pool = self.data['candidates']
+        if len(cand_pool) == 0:
+            raise Exception('候选集为空')
         logging.info('ranking query:' + query)
         end_time = datetime.datetime.now()
         cost = (end_time - start_time).total_seconds() * 1000
@@ -168,35 +174,31 @@ class RankingHttpServer(tornado.web.RequestHandler):
         sorted_indices, sim_scores = self.pred_instance.ranking(query, cand_pool)
 
         top_sorted_indices = sorted_indices[: 3]
-        logging.info(type(sim_scores))
-        logging.info(type(sorted_indices))
         top_scores = list(sim_scores[top_sorted_indices])
-        top_scores[0] = top_scores[0] * 10
+
+        chunks = [(idx, score) for idx, score in zip(top_sorted_indices, top_scores)]
+        logging.info('answer raw score:')
+        logging.info([(cand_pool[idx]['text'], cand_pool[idx]['userId'], score) for idx, score in chunks])
+        
+        if top_scores[0] < 0.4:
+            return [{'title': '特殊-其他', 'name': 'general.other', 'score': 1.0}]
+
+        top_scores[0] = top_scores[0] * 5
         top_scores = softmax(top_scores)
+        chunks = [(idx, score) for idx, score in zip(top_sorted_indices, top_scores)]
+        logging.info('answer final score:')
+        logging.info([(cand_pool[idx]['text'], cand_pool[idx]['userId'], score) for idx, score in chunks])
 
         tmp_time = datetime.datetime.now()
         result = []
-        for idx, score in zip(top_sorted_indices, top_scores):
+        for idx, score in chunks:
             title = cand_pool[idx]['text']
-            start_time = datetime.datetime.now()
             name = cand_pool[idx]['userId']
-            end_time = datetime.datetime.now()
-            cost = (end_time - start_time).total_seconds() * 1000
-            logging.info('get result name cost' + str(cost))
-
-            end_time = datetime.datetime.now()
-            cost = (end_time - start_time).total_seconds() * 1000 
-            logging.info('get result name cost' + str(cost))
-
-            start_time = datetime.datetime.now()
             item = {}
             item['title'] = title
             item['name'] = name
             item['score'] = score
             result.append(item)
-            end_time = datetime.datetime.now()
-            cost = (end_time - start_time).total_seconds() * 1000
-            logging.info('wrap one result cost' + str(cost))
         end_time = datetime.datetime.now()
         cost = (end_time - tmp_time).total_seconds() * 1000
         logging.info('wrap features cost' + str(cost))
@@ -264,6 +266,8 @@ if __name__ == '__main__':
     config['model_pb_path'] = MODEL_DIR + '/checkpoints/frozen_model.pb'
     config['tf_serving_url'] = 'http://localhost:'+str(TF_SERVING_REST_PORT)+'/v1/models/default:predict'
     config['signature_name'] = 'predict_text'
+    config['memory_file'] = MODEL_DIR + '/memory.tsv'
+
 
     pred_instance = tf_serving_evaluator.Evaluator(config)
     pred_instance.evaluate('班车报表')

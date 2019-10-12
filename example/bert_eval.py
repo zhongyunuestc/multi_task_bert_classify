@@ -96,7 +96,7 @@ def write_predictions(raw_examples, features, all_predictions, all_topk, idx2lab
 
 
     #each label acc
-    show_each_label_acc(idx2label, all_predictions, y_truth)
+    #show_each_label_acc(idx2label, all_predictions, y_truth)
 
     #save the evaluation to a csv
     all_topk_pred_label = []
@@ -115,6 +115,13 @@ def write_predictions(raw_examples, features, all_predictions, all_topk, idx2lab
     print('Saving evaluation to {0}'.format(out_path))
     with open(out_path, 'w') as f:
         csv.writer(f, delimiter="\t",).writerows(predictions_human_readable)
+
+
+    diff_out_path = os.path.join(FLAGS.model_dir, '..', 'diff_prediciton.csv')
+    print('Saving diff evaluation to {0}'.format(diff_out_path)) 
+    diff_predictions_human_readable = [item for item in predictions_human_readable if item[1] != item[2]]
+    with open(diff_out_path, 'w') as f:                                                              
+        csv.writer(f, delimiter="\t").writerows(diff_predictions_human_readable) 
 
 
 def get_feed_data(features):
