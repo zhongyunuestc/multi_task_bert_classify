@@ -566,7 +566,6 @@ class MTDNN(object):
             pointwise_probs = tf.nn.softmax(pointwise_logits, axis=-1, name='probs')
             '''
 
-            
             #method 3
             cosine_sims = cosine(a_output_layer, b_output_layer)
             pointwise_logits = tf.concat([tf.expand_dims(1 - cosine_sims, -1), tf.expand_dims(cosine_sims, -1)], 1)
@@ -1391,15 +1390,15 @@ def main(_):
     #num_train_steps = int((len(train_examples) * FLAGS.num_train_epochs - 1) / FLAGS.train_batch_size + 1)
 
 
-    #num_train_classify_steps = int((len(train_examples) * FLAGS.num_train_epochs - 1) / FLAGS.train_batch_size + 1)
-    #num_train_similar_steps = int((len(addon_train_examples) * FLAGS.num_train_epochs - 1) / FLAGS.train_batch_size + 1)
+    num_train_classify_steps = int((len(train_examples) * FLAGS.num_train_epochs - 1) / FLAGS.train_batch_size + 1)
+    num_train_similar_steps = int((len(addon_train_examples) * FLAGS.num_train_epochs - 1) / FLAGS.train_batch_size + 1)
     #num_train_similar_steps = num_train_classify_steps
-    #num_train_steps = num_train_classify_steps + num_train_similar_steps
+    num_train_steps = num_train_classify_steps + num_train_similar_steps
 
     
-    num_train_classify_steps = int((len(train_examples) - 1) / FLAGS.train_batch_size + 1)
-    num_train_similar_steps = int((len(addon_train_examples) - 1) / FLAGS.train_batch_size + 1)
-    num_train_steps = (num_train_classify_steps + num_train_similar_steps) * FLAGS.num_train_epochs
+    #num_train_classify_steps = int((len(train_examples) - 1) / FLAGS.train_batch_size + 1)
+    #num_train_similar_steps = int((len(addon_train_examples) - 1) / FLAGS.train_batch_size + 1)
+    #num_train_steps = num_train_classify_steps + num_train_similar_steps
 
 
     num_warmup_steps = int(num_train_steps * FLAGS.warmup_proportion)
@@ -1464,7 +1463,7 @@ def main(_):
                                                      FLAGS.train_batch_size, 
                                                      num_train_classify_steps,
                                                      name='train_classify',
-                                                     epochs=1,
+                                                     epochs=int(FLAGS.num_train_epochs),
                                                      shuffle=True)
         train_classify_data = get_data_from_iterator(sess, num_train_classify_steps, train_classify_batch_data_op, 'classify')
         
@@ -1475,7 +1474,7 @@ def main(_):
                                                      FLAGS.train_batch_size,
                                                      num_train_similar_steps,
                                                      name='train_similar',
-                                                     epochs=1,
+                                                     epochs=int(FLAGS.num_train_epochs),
                                                      shuffle=True)
 
 
@@ -1486,33 +1485,32 @@ def main(_):
         train_multi_task_data.extend(train_classify_data)
         train_multi_task_data.extend(train_similar_data)
         
-        
+        rng.shuffle(train_multi_task_data)
+
+
         best_acc_value = 0.0
         eval_acc_value = 0.0
-        for epoch in range(int(FLAGS.num_train_epochs)):
-            rng.shuffle(train_multi_task_data)
-            for cur_train_step, chunk in enumerate(train_multi_task_data):
-                train_step = cur_train_step + len(train_multi_task_data) * epoch
-                loss_value, acc_value = train_process(sess, mtdnn_model, chunk, tokenizer, candidate_dataset)
+        for train_step, chunk in enumerate(train_multi_task_data):
+            loss_value, acc_value = train_process(sess, mtdnn_model, chunk, tokenizer, candidate_dataset)
             
-                time_str = datetime.datetime.now().isoformat()
-                #print('{}: step {}, loss {:g}, acc {:g}'.format(time_str, train_step, loss_value, acc_value))
-                print('{}: step {},\tloss {:g},\tacc {:g}'.format(time_str, train_step, loss_value, 
+            time_str = datetime.datetime.now().isoformat()
+            #print('{}: step {}, loss {:g}, acc {:g}'.format(time_str, train_step, loss_value, acc_value))
+            print('{}: step {},\tloss {:g},\tacc {:g}'.format(time_str, train_step, loss_value, 
                                                                     acc_value))
 
-                if (train_step % 1000 == 0 and train_step != 0) or \
-                    (train_step == num_train_steps - 1):
-                    eval_loss_value, eval_acc_value = eval_process(sess,
+            if (train_step % 1000 == 0 and train_step != 0) or \
+               (train_step == num_train_steps - 1):
+                eval_loss_value, eval_acc_value = eval_process(sess,
                                                                mtdnn_model,
                                                                num_eval_classify_steps,
                                                                num_eval_similar_steps)
 
-                if eval_acc_value > best_acc_value:
-                    best_acc_value = eval_acc_value
-                    saver.save(sess, FLAGS.output_dir + '/checkpoints/model', global_step=train_step)
-
-            if not FLAGS.do_eval:
+            if eval_acc_value > best_acc_value:
+                best_acc_value = eval_acc_value
                 saver.save(sess, FLAGS.output_dir + '/checkpoints/model', global_step=train_step)
+
+        if not FLAGS.do_eval:
+            saver.save(sess, FLAGS.output_dir + '/checkpoints/model', global_step=train_step)
             
 
 
