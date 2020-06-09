@@ -279,7 +279,10 @@ if __name__ == '__main__':
             (r"/personranking", RankingHttpServer,
             dict(pred_instance=pred_instance))
         ])
-    application.listen(TF_SERVING_CLIENT_PORT)
-   
+    #application.listen(TF_SERVING_CLIENT_PORT)
+    
+    server = tornado.httpserver.HTTPServer(application)
+    server.bind(TF_SERVING_CLIENT_PORT)
+    server.start(4)
 
     tornado.ioloop.IOLoop.instance().start()

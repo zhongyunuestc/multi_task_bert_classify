@@ -16,6 +16,7 @@ nohup tensorflow_model_server --rest_api_port=$REST_API_PORT \
                               --model_base_path=$MODEL_DIR \
       >output.file 2>&1 &
 
+sleep 5s
 nohup python tf_serving_person_ranking_http.py> output.file 2>&1 &
 
 python sender.py

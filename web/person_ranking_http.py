@@ -150,7 +150,11 @@ class RankingHttpServer(tornado.web.RequestHandler):
         query = self.data['query']
         logging.info('extracted query:' + query)
         result = {}
-        features = self.pred_instance.extract_features(query)
+        if 'uuid_code' not in self.data:
+            features = self.pred_instance.extract_features(query)
+        else:
+            uuid_code = self.data['uuid_code']
+            features = self.pred_instance.extract_features(query, uuid_code)
         result['features'] = [float(feature) for feature in features]
         return result
     
@@ -244,6 +248,7 @@ if __name__ == '__main__':
     config['label_map_file'] = LABEL_MAP_FILE
     config['vocab_file'] = MODEL_DIR + '/vocab.txt'
     config['model_pb_path'] = MODEL_DIR + '/checkpoints/frozen_model.pb'
+    config['memory_file'] = MODEL_DIR + '/memory.tsv'
 
     pred_instance = Evaluator(config)
     pred_instance.extract_features('班车报表')
