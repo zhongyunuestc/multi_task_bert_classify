@@ -1,0 +1,26 @@
+basic:
+search person known sent:       0.86
+search person unknown sent:     0.7277
+
+--------------------------------
+mtdnn = classify + splited_pointwise_similar (a, b)
+search person known sent:       
+search person unknown sent:     0.6750921537651395    
+
+
+mtdnn = classify + splited_pointwise_similar (a, b, a - b, a * b)
+search person known sent:
+search person unknown sent:     0.7077
+
+
+
+
+mtdnn = classify + splited_pointwise_similar (a, b), loss=cosine softmax
+
+search person unknown sent:     0.6482359136387572
+
+
+-------------------------------
+mtdnn = classify + jointed_pointwise_similar
+search person known sent:       0.86
+search person unknown sent:     0.673

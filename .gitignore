@@ -6,4 +6,6 @@
 *.meta
 *.index
 *.tf_record
+*.swp
+*.swo
 
