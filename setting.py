@@ -20,10 +20,16 @@ MODEL_DIR = BASE_DIR + '/example/runs/' + SERVER_NAME
 
 
 #bert server
-TF_SERVING_REST_PORT=17122
-TF_SERVING_CLIENT_PORT=17123
-TF_SERVING_SIGNATRUE_NAME='predict_text'
+TF_SERVING_REST_PORT = 17122
+TF_SERVING_CLIENT_PORT = 17123
+TF_SERVING_SIGNATRUE_NAME = 'predict_text'
 
+
+#test
+ES_CLIENT_ADDRESS = 'http://172.16.159.164:20015/essential/findUserSentence/cleanAllFeature'
+
+#release
+#ES_CLIENT_ADDRESS = 'http://47.99.17.126:20016/essential/findUserSentence/cleanAllFeature'
 
 
 
