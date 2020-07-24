@@ -266,12 +266,12 @@ def eval():
                                                             is_training, 
                                                             sentence_features_tensor)            
 
-            print('calc is down...')
             #print(len(cand_output_feature_dict))
             #collect the predictions here
             corrects = 0.0
             user_corrects = 0.0
             count = 0.0
+            truths = []
             predicts = []
             all_sentence_features = []
             all_truth_label_ids = []
@@ -287,7 +287,8 @@ def eval():
 
                 batch_sentence_features = sess.run(sentence_features_tensor, pre_feed_dict)
                 all_sentence_features.extend(batch_sentence_features)
-    
+            print('calc is down...')
+
             for sentence_feature, feature in zip(all_sentence_features, features):
                 #absolute_ids = ranking_pool_by_tfidf_model(pool, tokenizer, top=200)
                 #cand_ids = [cand_input_features[int(i)-1].input_ids_a for i in absolute_ids]
@@ -296,18 +297,23 @@ def eval():
                 #print(tokenizer.convert_ids_to_tokens(cand_ids[0]))        
                 #exit()
 
-
                 expand_anchor_sentence_features = [sentence_feature] * candidate_size
                 batch_probs_value = cosine(expand_anchor_sentence_features, cand_output_features)
 
-                best_id = np.argmax(batch_probs_value)
+                #best_id = np.argmax(batch_probs_value)
+                unsorted_topk_ids = np.argpartition(batch_probs_value, -3)[-3:]
+
+                topk_ids = unsorted_topk_ids[np.argsort(-batch_probs_value[unsorted_topk_ids])]
+
+                best_id = topk_ids[0]
+
                 truth_id = feature.label_id
                 #print(best_id)
                 #print(truth_id)
                 #print(batch_probs_value[best_id])
-        
                 count += 1
-                predicts.append(candidates[best_id]) 
+                truths.append(candidates[truth_id])
+                predicts.append((candidates[best_id], candidates[topk_ids[1]], candidates[topk_ids[2]]))
                 if best_id == truth_id:
                     corrects += 1
                 
@@ -330,8 +336,8 @@ def eval():
 
 
     with codecs.open(MODEL_DIR + '/rs.txt', 'w', 'utf8') as fw:
-        for left, right in zip(raw_examples, predicts):
-            fw.write(left.text_a + '\t' + right + '\n')
+        for left, truth, (right_1, right_2, right_3) in zip(raw_examples, truths, predicts):
+            fw.write(left.text_a + '\t' + truth + '\t' + right_1 + '\t' + right_2 + '\t' + right_3 + '\n')
 
     #truth_label_ids = np.array([item.label_id for item in features])
     #write predictions to file

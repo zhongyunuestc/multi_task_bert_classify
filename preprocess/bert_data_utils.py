@@ -195,22 +195,25 @@ def convert_single_example(ex_index, example, label_map, max_seq_length, tokeniz
 
 
 
-def get_data_from_file(file_name):
+def get_data_from_file(file_name, is_predict=False):
     text_trunk = []
     with codecs.open(file_name, 'r', 'utf8') as fr:
         for i, line in enumerate(fr):
             line = line.strip().lower()
             line_info = line.split('\t')
             text_a = line_info[0].strip()
-            label = line_info[1].strip()
+            if is_predict:
+                label = None
+            else:
+                label = line_info[1].strip()
             yield InputExample(guid=i, text_a=text_a, label=label)
 
 
 
-def file_based_convert_examples_to_features(file_name, label_map, max_seq_length, tokenizer):
+def file_based_convert_examples_to_features(file_name, label_map, max_seq_length, tokenizer, is_predict=False):
     """Convert a set of `InputExample`s to a list of `InputFeatures`."""
 
-    examples = get_data_from_file(file_name)
+    examples = get_data_from_file(file_name, is_predict)
     features = []
     for (ex_index, example) in enumerate(examples):
         if ex_index % 10000 == 0:

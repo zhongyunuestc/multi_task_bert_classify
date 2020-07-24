@@ -8,7 +8,7 @@
 import requests
 import codecs
 import json
-
+import codecs
 
 def read_queries(input_file):
     queries = []

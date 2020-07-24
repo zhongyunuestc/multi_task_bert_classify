@@ -36,6 +36,7 @@ sys.path.append('../')
 from models import modeling
 from models import optimization
 from preprocess import tokenization
+from common.layers import losses as com_losses
 
 
 
@@ -561,7 +562,7 @@ def create_model_v2(bert_config,
         tf.logging.info("    name = %s, shape = %s%s", var.name, var.shape,
                                             init_string)
     
-    loss, per_example_loss, logits, probabilities, acc, pred_labels = inference(model, num_labels, is_training, label_ids)
+    loss, per_example_loss, logits, probabilities, acc, pred_labels = inference(model, num_labels, is_training, label_ids, input_mask)
     train_op = get_train_op(loss, learning_rate, num_train_steps, num_warmup_steps)
 
     return (input_ids, input_mask, segment_ids, label_ids, is_training,
@@ -583,9 +584,22 @@ def get_train_op(loss, learning_rate, num_train_steps, num_warmup_steps):
 
     return train_op
 
-def inference(model, num_labels, is_training, labels):
-    #output_layer = model.get_pooled_output()
-    output_layer = tf.reduce_mean(model.get_sequence_output(), 1)
+def inference(model, num_labels, is_training, labels, input_mask):
+    # method 1: cls representation
+    output_layer = model.get_pooled_output()
+
+    # method 2: mean all no mask
+    #output_layer = tf.reduce_mean(model.get_sequence_output(), 1)
+    
+    # method 3: mask type
+    #mask = tf.cast(input_mask, dtype=tf.float32)
+    #output_layer = model.get_sequence_output()
+    #output_layer = output_layer * tf.expand_dims(mask, -1)
+    #output_layer = tf.reduce_sum(output_layer, axis=1)
+    #valid_num = tf.reduce_sum(mask, axis=1, keep_dims=True) + 1e-12
+    #output_layer = output_layer / valid_num
+
+
     output_layer = tf.identity(output_layer, 'sentence_features')
 
     hidden_size = output_layer.shape[-1].value
@@ -623,6 +637,8 @@ def inference(model, num_labels, is_training, labels):
         one_hot_labels = tf.one_hot(labels, depth=num_labels, dtype=tf.float32)
 
         per_example_loss = -tf.reduce_sum(one_hot_labels*log_probs, axis=-1)
+        #per_example_loss = com_losses.amsoftmax_loss(logits=logits, labels=one_hot_labels) 
+
         loss = tf.reduce_mean(per_example_loss)
         pred_labels = tf.argmax(logits, 1, name='pred_labels')
     
